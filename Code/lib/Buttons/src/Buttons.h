@@ -5,16 +5,17 @@
 
 class Buttons
 {
-private:
-    const static int buttonsCount = 16;
-    const static Range inactive;
-    const static Range buttonRanges[buttonsCount];
 
+public:
+    const static int BUTTONS_COUNT = 16;
+    const static Range buttonsRanges[BUTTONS_COUNT];
+    const static Range inactiveRange;
+
+private:
     byte pin;
 
 public:
     Buttons(byte pin) : pin(pin) {}
     bool isAnyOn() const;
     bool isOn(byte buttonNumber) const;
-    static int getButtonsCount();
 };
