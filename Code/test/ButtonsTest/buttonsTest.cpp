@@ -28,15 +28,8 @@ void blink(int repeat)
 
 void loop()
 {
-    if (!buttons.isAnyOn())
-        return;
-    //TODO: Choose optimal delay
-    //TODO: (Optional) Use millis() instead of delay.
-    delay(100); //Delay to avoid button bounce
-    for (int i = 0; i < Buttons::BUTTONS_COUNT; i++)
-        if (buttons.isOn(i))
-        {
-            blink(i + 1);
-            return;
-        }
+    //TODO: Add delay if debounce needed.
+    int onButton = buttons.getOn();
+    if (onButton >= 0)
+        blink(onButton + 1);
 }
