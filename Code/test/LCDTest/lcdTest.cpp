@@ -28,8 +28,8 @@ void setup()
     delay(2000);
     lcd.init();
     UNITY_BEGIN();
-    RUN_TEST(shouldPrintTesterRefleksu);
     RUN_TEST(shouldPrintHelloWorld);
+    RUN_TEST(shouldPrintTesterRefleksu);
     UNITY_END();
 }
 

@@ -19,9 +19,19 @@ void shouldTurnOnDiode0()
     delay(5000);
 }
 
-void shouldTurnOnDiode8(){
+void shouldTurnOnDiode8()
+{
     diodes.turnOnExclusively(8);
     delay(5000);
+}
+
+void shouldTurnOnDiodesInOrder()
+{
+    for (int i = 0; i < Diodes::DIODES_COUNT; i++)
+    {
+        diodes.turnOnExclusively(i);
+        delay(250);
+    }
 }
 
 void setup()
@@ -30,6 +40,7 @@ void setup()
     UNITY_BEGIN();
     RUN_TEST(shouldTurnOnDiode0);
     RUN_TEST(shouldTurnOnDiode8);
+    RUN_TEST(shouldTurnOnDiodesInOrder);
     UNITY_END();
 }
 
