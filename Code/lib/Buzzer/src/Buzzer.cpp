@@ -1,6 +1,6 @@
 #include "Buzzer.h"
 
-void Buzzer::playTone(unsigned int frequency, unsigned long duration)
+void Buzzer::playTone(unsigned int frequency, unsigned long durationMillis)
 {
-    tone(pin, frequency, duration);
+    tone(pin, frequency, durationMillis);
 }
