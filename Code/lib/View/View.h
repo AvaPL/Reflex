@@ -16,6 +16,8 @@ public:
     View(LiquidCrystal_I2C &lcd, Diodes &diodes, Buzzer &buzzer);
     void printWelcomeScreen();
     void printCountdown();
+    void printScore(long score, long highscore);
+    void printNewHighscore(long newHighscore);
     LiquidCrystal_I2C &getLcd();
     Diodes &getDiodes();
     Buzzer &getBuzzer();

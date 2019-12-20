@@ -51,6 +51,27 @@ void View::View::printCountdownNumber(int number, byte column, byte row)
     }
 }
 
+void View::printScore(long score, long highscore)
+{
+    char scoreString[17];
+    snprintf(scoreString, 17, "Score:%10ld", score);
+    char highscoreString[17];
+    snprintf(highscoreString, 17, "Highscore:%6ld", highscore);
+    lcd.clear();
+    lcd.print(scoreString);
+    lcd.setCursor(0, 1);
+    lcd.print(highscoreString);
+}
+
+void View::printNewHighscore(long newHighscore)
+{
+    lcd.clear();
+    lcd.print(" NEW HIGHSCORE! ");
+    String newHighscoreString = String(newHighscore);
+    lcd.setCursor(8 - newHighscoreString.length() / 2, 1);
+    lcd.print(newHighscoreString);
+}
+
 LiquidCrystal_I2C &View::getLcd()
 {
     return lcd;

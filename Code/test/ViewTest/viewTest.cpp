@@ -56,6 +56,20 @@ void shouldPrintCountdown()
     view->printCountdown();
 }
 
+void shouldPrintScoreWithHighscore()
+{
+    view->printScore(99, 999);
+    delay(2000);
+}
+
+void shouldPrintNewHighscoreCentered()
+{
+    view->printNewHighscore(99);
+    delay(2000);
+    view->printNewHighscore(999);
+    delay(2000);
+}
+
 void setup()
 {
     delay(2000);
@@ -65,7 +79,9 @@ void setup()
     RUN_TEST(shouldPrintWelcomeScreen);
     // RUN_TEST(shouldMakeBuzzerSound);
     RUN_TEST(shouldTurnOnLed0Then5Then10Then15);
-    RUN_TEST(shouldPrintCountdown);
+    // RUN_TEST(shouldPrintCountdown);
+    RUN_TEST(shouldPrintScoreWithHighscore);
+    RUN_TEST(shouldPrintNewHighscoreCentered);
     UNITY_END();
     delete view;
 }
