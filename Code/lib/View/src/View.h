@@ -15,6 +15,9 @@ private:
     LCDBarGraph lcdBarGraph;
 
 public:
+    /**
+     * @param lcd - LCD that is already initialized 
+     */
     View(LiquidCrystal_I2C &lcd, Diodes &diodes, Buzzer &buzzer);
     void printWelcomeScreen();
     void printCountdown();

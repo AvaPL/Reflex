@@ -1,8 +1,8 @@
 #include "View.h"
 
-View::View(LiquidCrystal_I2C &lcd, Diodes &diodes, Buzzer &buzzer) : lcd(lcd), diodes(diodes), buzzer(buzzer), lcdBarGraph(lcd, 1, 0, 16)
+View::View(LiquidCrystal_I2C &lcd, Diodes &diodes, Buzzer &buzzer)
+    : lcd(lcd), diodes(diodes), buzzer(buzzer), lcdBarGraph(lcd, 1, 0, 16)
 {
-    lcd.init();
     diodes.turnOffAll();
 }
 

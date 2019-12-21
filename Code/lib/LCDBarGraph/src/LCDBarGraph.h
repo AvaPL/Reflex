@@ -64,6 +64,9 @@ private:
          B11111}};
 
 public:
+    /**
+     * @param lcd - LCD that is already initialized 
+     */
     LCDBarGraph(LiquidCrystal_I2C &lcd, int row, int column, int length);
     void drawBarGraph(float percentageFill);
     void clear();
