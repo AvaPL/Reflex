@@ -1,8 +1,9 @@
 #pragma once
 
 #include <LiquidCrystal_I2C.h>
-#include "Buzzer.h"
+#include "LCDBarGraph.h"
 #include "Diodes.h"
+#include "Buzzer.h"
 
 class View
 {
@@ -11,6 +12,7 @@ private:
     LiquidCrystal_I2C &lcd;
     Diodes &diodes;
     Buzzer &buzzer;
+    LCDBarGraph lcdBarGraph;
 
 public:
     View(LiquidCrystal_I2C &lcd, Diodes &diodes, Buzzer &buzzer);

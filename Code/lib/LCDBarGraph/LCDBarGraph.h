@@ -11,6 +11,7 @@ private:
     int row;
     int column;
     int totalBars;
+    int currentlyDrawnBars;
 
     byte bars[6][8]{
         {B00000,
@@ -65,4 +66,9 @@ private:
 public:
     LCDBarGraph(LiquidCrystal_I2C &lcd, int row, int column, int length);
     void drawBarGraph(float percentageFill);
+
+private:
+    void clear();
+    void drawAdditionalBars(int barsToDraw);
+    void clearSpareBars(int barsToDraw);
 };

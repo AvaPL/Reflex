@@ -14,7 +14,6 @@ LCDBarGraph *lcdBarGraph; //Pointer, because of global variables initialization 
 void tearDown()
 {
     delay(2000);
-    lcd.clear();
 }
 
 void shouldDraw100PercentFillGraph()
@@ -32,6 +31,24 @@ void shouldDraw60PercentFillGraph()
     lcdBarGraph->drawBarGraph(60);
 }
 
+void shouldDrawFrom100To0PercentGraph()
+{
+    for (int i = 100; i >= 0; i--)
+    {
+        lcdBarGraph->drawBarGraph(i);
+        delay(50);
+    }
+}
+
+void shouldDrawFrom100To0PercentGraphWith10PercentStep()
+{
+    for (int i = 100; i >= 0; i -= 10)
+    {
+        lcdBarGraph->drawBarGraph(i);
+        delay(50);
+    }
+}
+
 void shouldAllowWritingAdditionalCharacters()
 {
     lcdBarGraph->drawBarGraph(80);
@@ -47,7 +64,10 @@ void runTests()
     RUN_TEST(shouldDraw100PercentFillGraph);
     RUN_TEST(shouldDraw50PercentFillGraph);
     RUN_TEST(shouldDraw60PercentFillGraph);
+    RUN_TEST(shouldDrawFrom100To0PercentGraph);
+    RUN_TEST(shouldDrawFrom100To0PercentGraphWith10PercentStep);
     RUN_TEST(shouldAllowWritingAdditionalCharacters);
+    lcd.clear();
 }
 
 void setup()
