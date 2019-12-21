@@ -1,9 +1,9 @@
 #include "Buttons.h"
 #include <unity.h>
 
-const byte BUTTON_PIN = A0;
+const byte BUTTONS_PIN = A0;
 
-Buttons buttons(BUTTON_PIN);
+Buttons buttons(BUTTONS_PIN);
 
 void setup()
 {

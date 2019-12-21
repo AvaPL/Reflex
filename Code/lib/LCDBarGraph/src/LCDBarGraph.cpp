@@ -21,6 +21,8 @@ void LCDBarGraph::clear()
 
 void LCDBarGraph::drawBarGraph(float percentageFill)
 {
+    if (percentageFill < 0 || percentageFill > 100)
+        return;
     int barsToDraw = (int)(totalBars * percentageFill / 100);
     if (barsToDraw > currentlyDrawnBars)
         drawAdditionalBars(barsToDraw);
