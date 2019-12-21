@@ -2,7 +2,11 @@
 #include <LiquidCrystal_I2C.h>
 #include <unity.h>
 
-LiquidCrystal_I2C lcd(0x20, 16, 2);
+const byte LCD_ADDRESS = 0x20;
+const int LCD_COLUMNS = 16;
+const int LCD_ROWS = 2;
+
+LiquidCrystal_I2C lcd(LCD_ADDRESS, LCD_COLUMNS, LCD_ROWS);
 
 void tearDown()
 {
