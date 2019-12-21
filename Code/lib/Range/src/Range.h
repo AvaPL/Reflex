@@ -11,7 +11,7 @@ public:
     /**
      * @param lowerBound - lower bound (inclusive)
      * @param upperBound - upper bound (inclusive)
-    `*/
+     */
     Range(int lowerBound, int upperBound)
         : lowerBound(lowerBound), upperBound(upperBound) {}
     bool containsValue(int value) const;

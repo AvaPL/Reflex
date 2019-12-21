@@ -1,6 +1,5 @@
 #include "Buttons.h"
 
-//TODO: Add valid buttons ranges.
 const Range Buttons::buttonsRanges[Buttons::BUTTONS_COUNT]{Range(20, 60),
                                                            Range(61, 100),
                                                            Range(101, 140),
