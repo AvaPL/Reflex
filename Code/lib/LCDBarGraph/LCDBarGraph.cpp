@@ -7,7 +7,6 @@ LCDBarGraph::LCDBarGraph(LiquidCrystal_I2C &lcd, int row, int column, int length
     for (size_t i = 0; i <= 5; i++)
         lcd.createChar(i, bars[i]);
     clear();
-    currentlyDrawnBars = 0;
 }
 
 void LCDBarGraph::clear()
@@ -17,6 +16,7 @@ void LCDBarGraph::clear()
         lcd.setCursor(column + i, row);
         lcd.write(0);
     }
+    currentlyDrawnBars = 0;
 }
 
 void LCDBarGraph::drawBarGraph(float percentageFill)

@@ -22,6 +22,7 @@ View *view; //Pointer, because of global variables initialization order.
 
 void tearDown()
 {
+    delay(2000);
     view->getLcd().clear();
     view->getDiodes().turnOffAll();
 }
@@ -59,7 +60,6 @@ void shouldPrintCountdown()
 void shouldPrintScoreWithHighscore()
 {
     view->printScore(99, 999);
-    delay(2000);
 }
 
 void shouldPrintNewHighscoreCentered()
@@ -67,7 +67,6 @@ void shouldPrintNewHighscoreCentered()
     view->printNewHighscore(99);
     delay(2000);
     view->printNewHighscore(999);
-    delay(2000);
 }
 
 void setup()
@@ -77,9 +76,9 @@ void setup()
     UNITY_BEGIN();
     RUN_TEST(shouldInitializeCorrectly);
     RUN_TEST(shouldPrintWelcomeScreen);
-    // RUN_TEST(shouldMakeBuzzerSound);
+    RUN_TEST(shouldMakeBuzzerSound);
     RUN_TEST(shouldTurnOnLed0Then5Then10Then15);
-    // RUN_TEST(shouldPrintCountdown);
+    RUN_TEST(shouldPrintCountdown);
     RUN_TEST(shouldPrintScoreWithHighscore);
     RUN_TEST(shouldPrintNewHighscoreCentered);
     UNITY_END();

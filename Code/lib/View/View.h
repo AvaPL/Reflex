@@ -18,6 +18,11 @@ public:
     View(LiquidCrystal_I2C &lcd, Diodes &diodes, Buzzer &buzzer);
     void printWelcomeScreen();
     void printCountdown();
+    void initializeGameScreen();
+    void setScore(long score);
+    void setMultiplier(int multiplier);
+    void addMistakeMark(int mistakeNumber);
+    void setTimeBar(float percentageFill);
     void printScore(long score, long highscore);
     void printNewHighscore(long newHighscore);
     LiquidCrystal_I2C &getLcd();

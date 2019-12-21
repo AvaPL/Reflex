@@ -51,6 +51,44 @@ void View::View::printCountdownNumber(int number, byte column, byte row)
     }
 }
 
+void View::initializeGameScreen()
+{
+    lcd.clear();
+    lcd.print("S:0");
+    lcd.setCursor(11, 0);
+    lcd.print("x1");
+    lcdBarGraph.clear();
+    lcdBarGraph.drawBarGraph(100);
+}
+
+void View::setScore(long score)
+{
+    char scoreString[9];
+    snprintf(scoreString, 9, "S:%-6ld", score);
+    lcd.setCursor(0, 0);
+    lcd.print(scoreString);
+}
+
+void View::setMultiplier(int multiplier)
+{
+    lcd.setCursor(12, 0);
+    lcd.print(multiplier);
+}
+
+void View::addMistakeMark(int mistakeNumber)
+{
+    int cursorPosition = 16 - mistakeNumber;
+    if (cursorPosition < 14)
+        return;
+    lcd.setCursor(cursorPosition, 0);
+    lcd.print('X');
+}
+
+void View::setTimeBar(float percentageFill)
+{
+    lcdBarGraph.drawBarGraph(percentageFill);
+}
+
 void View::printScore(long score, long highscore)
 {
     char scoreString[17];
