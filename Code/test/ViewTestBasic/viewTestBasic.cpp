@@ -1,6 +1,6 @@
-#include "View.h"
 #include <Arduino.h>
 #include <unity.h>
+#include "View.h"
 
 const byte LCD_ADDRESS = 0x20;
 const int LCD_COLUMNS = 16;

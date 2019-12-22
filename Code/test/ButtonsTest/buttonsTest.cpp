@@ -1,5 +1,5 @@
-#include "Buttons.h"
 #include <unity.h>
+#include "Buttons.h"
 
 const byte BUTTONS_PIN = A0;
 
@@ -28,7 +28,6 @@ void blink(int repeat)
 
 void loop()
 {
-    //TODO: Add delay if debounce needed.
     int onButton = buttons.getOn();
     if (onButton >= 0)
         blink(onButton + 1);

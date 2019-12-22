@@ -15,6 +15,6 @@ private:
     byte pin;
 
 public:
-    Buttons(byte pin) : pin(pin) {}
-    int getOn() const;
+    Buttons(byte pin);
+    int getOn();
 };

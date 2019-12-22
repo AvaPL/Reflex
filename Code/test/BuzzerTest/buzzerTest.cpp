@@ -1,5 +1,5 @@
-#include "Buzzer.h"
 #include <unity.h>
+#include "Buzzer.h"
 
 const byte BUZZER_PIN = 8;
 

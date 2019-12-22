@@ -7,65 +7,18 @@ class LCDBarGraph
 {
 
 private:
+    static byte BARS[6][8];
+
+private:
     LiquidCrystal_I2C &lcd;
     int row;
     int column;
     int totalBars;
     int currentlyDrawnBars;
 
-    byte bars[6][8]{
-        {B00000,
-         B00000,
-         B00000,
-         B00000,
-         B00000,
-         B00000,
-         B00000,
-         B00000},
-        {B10000,
-         B10000,
-         B10000,
-         B10000,
-         B10000,
-         B10000,
-         B10000,
-         B10000},
-        {B11000,
-         B11000,
-         B11000,
-         B11000,
-         B11000,
-         B11000,
-         B11000,
-         B11000},
-        {B11100,
-         B11100,
-         B11100,
-         B11100,
-         B11100,
-         B11100,
-         B11100,
-         B11100},
-        {B11110,
-         B11110,
-         B11110,
-         B11110,
-         B11110,
-         B11110,
-         B11110,
-         B11110},
-        {B11111,
-         B11111,
-         B11111,
-         B11111,
-         B11111,
-         B11111,
-         B11111,
-         B11111}};
-
 public:
     /**
-     * @param lcd - LCD that is already initialized 
+     * @param lcd - LCD that is already initialized.
      */
     LCDBarGraph(LiquidCrystal_I2C &lcd, int row, int column, int length);
     void drawBarGraph(float percentageFill);

@@ -1,6 +1,6 @@
-#include "Diodes.h"
 #include <Arduino.h>
 #include <unity.h>
+#include "Diodes.h"
 
 const byte LATCH_PIN = 4;
 const byte DATA_PIN = 6;

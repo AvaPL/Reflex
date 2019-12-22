@@ -9,8 +9,8 @@ private:
 
 public:
     /**
-     * @param lowerBound - lower bound (inclusive)
-     * @param upperBound - upper bound (inclusive)
+     * @param lowerBound - lower bound (inclusive).
+     * @param upperBound - upper bound (inclusive).
      */
     Range(int lowerBound, int upperBound)
         : lowerBound(lowerBound), upperBound(upperBound) {}

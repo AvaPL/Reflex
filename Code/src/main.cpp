@@ -61,8 +61,6 @@ void initializeView()
   delay(2000);
 }
 
-//TODO: Cleanup code (all classes including tests).
-
 void startNewGame();
 void setGameMode();
 void pickDiode();

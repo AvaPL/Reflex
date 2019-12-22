@@ -17,7 +17,11 @@ const Range Buttons::buttonsRanges[Buttons::BUTTONS_COUNT]{Range(20, 60),
                                                            Range(591, 635),
                                                            Range(636, 675)};
 
-int Buttons::getOn() const
+Buttons::Buttons(byte pin) : pin(pin)
+{
+}
+
+int Buttons::getOn()
 {
     int voltage = analogRead(pin);
     for (size_t i = 0; i < BUTTONS_COUNT; i++)
