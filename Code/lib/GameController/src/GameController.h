@@ -25,11 +25,19 @@ public:
     int pickRandomDiode();
     bool isCorrectButtonPressed();
     bool isCorrectButtonPressed(unsigned long debounceTimeMillis);
-    unsigned long getTimeElapsedMillis();
+    unsigned long getRemainingTimeForReactionMillis();
     bool hasTimeExpired();
     void resetTimer();
     long addScore();
+    /**
+     * Preincrements mistakes count.
+     * @return Mistakes value after preincrementing.
+     */
     int incrementMistakes();
+    /**
+     * Resets internal state of the controller. Doesn't affect 
+     * the timer, for resetting the timer see @see resetTimer(). 
+     */
     void reset();
     unsigned long getTimeForReactionMillis();
     int getMultiplier();

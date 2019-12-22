@@ -36,45 +36,85 @@ void setup()
   delay(2000);
 }
 
-//TODO: Pick another diode after mistake.
 //TODO: Add time for reaction decrease.
 //TODO: Add slow/fast modes.
 //TODO: Add highscores.
 //TODO: Add buzzer sounds.
-//TODO: Cleanup code.
+//TODO: Cleanup code (all classes including tests).
+
+void startNewGame();
+void pickDiode();
+void doGameStep();
+void addMistake();
+void addScore();
+void updateTimer();
+void endGame();
+
+int score = 0;
+int mistakes = 0;
+int pickedDiode;
 
 void loop()
+{
+  startNewGame();
+  while (mistakes < 3)
+    doGameStep();
+  endGame();
+  delay(5000);
+}
+
+void startNewGame()
 {
   view->printCountdown();
   view->initializeGameScreen();
   gameController->reset();
   gameController->resetTimer();
-  int score = 0;
-  int mistakes = 0;
-  int pickedDiode = gameController->pickRandomDiode();
+  pickDiode();
+}
+
+void pickDiode()
+{
+  pickedDiode = gameController->pickRandomDiode();
   view->getDiodes().turnOnExclusively(pickedDiode);
-  while (mistakes < 3)
-  {
-    if (gameController->hasTimeExpired())
-    {
-      mistakes = gameController->incrementMistakes();
-      view->addMistakeMark(mistakes);
-      view->setMultiplier(gameController->getMultiplier());
-      gameController->resetTimer();
-    }
-    else if (gameController->isCorrectButtonPressed())
-    {
-      score = gameController->addScore();
-      view->setScore(score);
-      view->setMultiplier(gameController->getMultiplier());
-      pickedDiode = gameController->pickRandomDiode();
-      view->getDiodes().turnOnExclusively(pickedDiode);
-      gameController->resetTimer();
-    }
-    float timeLeftPercentage = 100.0f * (gameController->getTimeForReactionMillis() - gameController->getTimeElapsedMillis()) / gameController->getTimeForReactionMillis();
-    view->setTimeBar(timeLeftPercentage);
-  }
+}
+
+void doGameStep()
+{
+  if (gameController->hasTimeExpired())
+    addMistake();
+  else if (gameController->isCorrectButtonPressed(5))
+    addScore();
+  updateTimer();
+}
+
+void addMistake()
+{
+  mistakes = gameController->incrementMistakes();
+  view->addMistakeMark(mistakes);
+  view->setMultiplier(gameController->getMultiplier());
+  pickDiode();
+  gameController->resetTimer();
+}
+
+void addScore()
+{
+  score = gameController->addScore();
+  view->setScore(score);
+  view->setMultiplier(gameController->getMultiplier());
+  pickDiode();
+  gameController->resetTimer();
+}
+
+void updateTimer()
+{
+  float timeLeftPercentage = 100.0f * gameController->getRemainingTimeForReactionMillis() / gameController->getTimeForReactionMillis();
+  view->setTimeBar(timeLeftPercentage);
+}
+
+void endGame()
+{
   view->getDiodes().turnOffAll();
   view->printScore(score, 0);
-  delay(5000);
+  score = 0;
+  mistakes = 0;
 }

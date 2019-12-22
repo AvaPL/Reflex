@@ -29,9 +29,10 @@ bool GameController::isCorrectButtonPressed(unsigned long debounceTimeMillis)
     return buttons.getOn() == pickedDiode;
 }
 
-unsigned long GameController::getTimeElapsedMillis()
+unsigned long GameController::getRemainingTimeForReactionMillis()
 {
-    return millis() - lastTimestepMillis;
+    int elapsedTimeMillis = millis() - lastTimestepMillis;
+    return timeForReactionMillis - elapsedTimeMillis;
 }
 
 bool GameController::hasTimeExpired()
