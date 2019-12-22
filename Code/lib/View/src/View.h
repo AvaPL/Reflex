@@ -1,9 +1,9 @@
 #pragma once
 
 #include <LiquidCrystal_I2C.h>
-#include "LCDBarGraph.h"
 #include "Diodes.h"
 #include "Buzzer.h"
+#include "LCDBarGraph.h"
 
 class View
 {
@@ -16,7 +16,7 @@ private:
 
 public:
     /**
-     * @param lcd - LCD that is already initialized 
+     * @param lcd - LCD that is already initialized. 
      */
     View(LiquidCrystal_I2C &lcd, Diodes &diodes, Buzzer &buzzer);
     void printWelcomeScreen();

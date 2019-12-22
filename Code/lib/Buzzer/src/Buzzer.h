@@ -14,6 +14,6 @@ private:
     byte pin;
 
 public:
-    Buzzer(byte pin) : pin(pin) {}
+    Buzzer(byte pin);
     void playTone(unsigned int frequency, unsigned long durationMillis);
 };

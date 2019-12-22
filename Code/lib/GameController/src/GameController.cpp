@@ -3,7 +3,8 @@
 GameController::GameController(Buttons &buttons) : buttons(buttons)
 {
     randomSeed(analogRead(A1));
-    timeForReactionMillis = startTimeForReactionMillis;
+    timeForReactionMillis = START_TIME_FOR_REACTION_MILLIS;
+    mode = MODE::SLOW;
     score = 0;
     multiplier = 1;
     streak = 0;
@@ -29,9 +30,10 @@ bool GameController::isCorrectButtonPressed(unsigned long debounceTimeMillis)
     return buttons.getOn() == pickedDiode;
 }
 
-unsigned long GameController::getTimeElapsedMillis()
+unsigned long GameController::getRemainingTimeForReactionMillis()
 {
-    return millis() - lastTimestepMillis;
+    int elapsedTimeMillis = millis() - lastTimestepMillis;
+    return timeForReactionMillis - elapsedTimeMillis;
 }
 
 bool GameController::hasTimeExpired()
@@ -48,12 +50,24 @@ long GameController::addScore()
 {
     score += multiplier;
     ++streak;
+    updateMultiplier();
+    updateTimeForReaction();
+    return score;
+}
+
+void GameController::updateMultiplier()
+{
     if (multiplier < 9 && streak == multiplier)
     {
         ++multiplier;
         streak = 0;
     }
-    return score;
+}
+
+void GameController::updateTimeForReaction()
+{
+    float timeMultiplier = mode == MODE::SLOW ? SLOW_TIME_MULTIPLIER : FAST_TIME_MULTIPLIER;
+    timeForReactionMillis = (unsigned long)(timeMultiplier * timeForReactionMillis);
 }
 
 int GameController::incrementMistakes()
@@ -65,6 +79,8 @@ int GameController::incrementMistakes()
 
 void GameController::reset()
 {
+    timeForReactionMillis = START_TIME_FOR_REACTION_MILLIS;
+    mode = MODE::SLOW;
     score = 0;
     multiplier = 1;
     streak = 0;
@@ -79,4 +95,14 @@ unsigned long GameController::getTimeForReactionMillis()
 int GameController::getMultiplier()
 {
     return multiplier;
+}
+
+GameController::MODE GameController::getMode()
+{
+    return mode;
+}
+
+void GameController::setMode(MODE mode)
+{
+    this->mode = mode;
 }

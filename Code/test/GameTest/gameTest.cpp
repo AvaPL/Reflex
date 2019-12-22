@@ -55,18 +55,18 @@ void shouldPick10RandomDiodesAndWaitForButtonPresses()
 
 void shouldDetectTimeExpiration()
 {
-    delay(GameController::startTimeForReactionMillis / 2);
+    delay(2000 / 2);
     TEST_ASSERT_FALSE(gameController->hasTimeExpired());
-    delay(GameController::startTimeForReactionMillis);
+    delay(2000);
     TEST_ASSERT_TRUE(gameController->hasTimeExpired());
 }
 
 void shouldCountMistakes()
 {
-    delay(GameController::startTimeForReactionMillis * 2);
+    delay(2000 * 2);
     TEST_ASSERT_TRUE(gameController->hasTimeExpired());
     TEST_ASSERT_EQUAL(1, gameController->incrementMistakes());
-    delay(GameController::startTimeForReactionMillis * 2);
+    delay(2000 * 2);
     TEST_ASSERT_TRUE(gameController->hasTimeExpired());
     TEST_ASSERT_EQUAL(2, gameController->incrementMistakes());
 }
@@ -75,7 +75,7 @@ void shouldVisualyRepresentTimeAsBarGraph()
 {
     while (!gameController->hasTimeExpired())
     {
-        float timeLeftPercentage = 100.0f * (gameController->getTimeForReactionMillis() - gameController->getTimeElapsedMillis()) / gameController->getTimeForReactionMillis();
+        float timeLeftPercentage = 100.0f * gameController->getTimeForReactionMillis() / gameController->getTimeForReactionMillis();
         view->setTimeBar(timeLeftPercentage);
     }
 }

@@ -1,11 +1,61 @@
 #include "LCDBarGraph.h"
 
+byte LCDBarGraph::BARS[6][8]{
+    {B00000,
+     B00000,
+     B00000,
+     B00000,
+     B00000,
+     B00000,
+     B00000,
+     B00000},
+    {B10000,
+     B10000,
+     B10000,
+     B10000,
+     B10000,
+     B10000,
+     B10000,
+     B10000},
+    {B11000,
+     B11000,
+     B11000,
+     B11000,
+     B11000,
+     B11000,
+     B11000,
+     B11000},
+    {B11100,
+     B11100,
+     B11100,
+     B11100,
+     B11100,
+     B11100,
+     B11100,
+     B11100},
+    {B11110,
+     B11110,
+     B11110,
+     B11110,
+     B11110,
+     B11110,
+     B11110,
+     B11110},
+    {B11111,
+     B11111,
+     B11111,
+     B11111,
+     B11111,
+     B11111,
+     B11111,
+     B11111}};
+
 LCDBarGraph::LCDBarGraph(LiquidCrystal_I2C &lcd, int row, int column, int length)
     : lcd(lcd), row(row), column(column)
 {
     totalBars = length * 5;
     for (size_t i = 0; i <= 5; i++)
-        lcd.createChar(i, bars[i]);
+        lcd.createChar(i, BARS[i]);
     clear();
 }
 
