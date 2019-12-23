@@ -71,7 +71,7 @@ void updateTimer();
 void endGame();
 void printScore();
 void printHighscoreAndPlaySound();
-void printScoreAndPlaySound(int highscore);
+void printScoreAndPlaySound(long highscore);
 void updateHighscores();
 
 int score = 0;
@@ -155,7 +155,7 @@ void endGame()
 
 void printScore()
 {
-  int highscore = gameController->getMode() == GameController::MODE::SLOW ? highscoreSlow : highscoreFast;
+  long highscore = gameController->getMode() == GameController::MODE::SLOW ? highscoreSlow : highscoreFast;
   if (score > highscore)
     printHighscoreAndPlaySound();
   else
@@ -176,7 +176,7 @@ void printHighscoreAndPlaySound()
   }
 }
 
-void printScoreAndPlaySound(int highscore)
+void printScoreAndPlaySound(long highscore)
 {
   view->printScore(score, highscore);
   Buzzer &buzzer = view->getBuzzer();
