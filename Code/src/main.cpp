@@ -74,7 +74,7 @@ void printHighscoreAndPlaySound();
 void printScoreAndPlaySound(long highscore);
 void updateHighscores();
 
-int score = 0;
+long score = 0;
 int mistakes = 0;
 int pickedDiode;
 
