@@ -32,8 +32,8 @@ const byte MODE_PIN = 7;
 const int HIGHSCORE_ADDRESS_SLOW = 0;
 const int HIGHSCORE_ADDRESS_FAST = HIGHSCORE_ADDRESS_SLOW + sizeof(long);
 
-int highscoreSlow = 0;
-int highscoreFast = 0;
+long highscoreSlow = 0;
+long highscoreFast = 0;
 
 void loadHighscores();
 void initializeView();
