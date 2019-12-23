@@ -191,7 +191,13 @@ void printScoreAndPlaySound(long highscore)
 void updateHighscores()
 {
   if (gameController->getMode() == GameController::MODE::SLOW)
+  {
     highscoreSlow = max(score, highscoreSlow);
+    EEPROM.put(HIGHSCORE_ADDRESS_SLOW, highscoreSlow);
+  }
   else
+  {
     highscoreFast = max(score, highscoreFast);
+    EEPROM.put(HIGHSCORE_ADDRESS_FAST, highscoreFast);
+  }
 }
